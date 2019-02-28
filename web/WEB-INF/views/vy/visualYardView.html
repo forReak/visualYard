@@ -6,17 +6,10 @@
     <th:block th:include="common/base::proejct-context" th:remove="tag"></th:block>
 </head>
 <body>
-hello world!</br>
-<input type="text" th:value="${name}"></br>
-<img th:src="@{/image/pic1.png}" alt="pic">
-
-<button type="button" class="btn btn-primary" onclick="alertText()">点我</button>
+visualYardView
 </body>
 
 <script type="text/javascript" th:inline="javascript">
-    function alertText (){
-        alert(ctxPath);
-        alert([[${name}]]);
-    }
+
 </script>
 </html>

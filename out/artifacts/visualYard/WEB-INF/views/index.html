@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <th:block th:include="common/base::proejct-context" th:remove="tag"></th:block>
 </head>
 <body>
 hello world!</br>
 <input type="text" th:value="${name}"></br>
-<img src="/visualYard/image/pic1.png" alt="pic">
+<img th:src="@{/image/pic1.png}" alt="pic">
+
+<button type="button" class="btn btn-primary" onclick="alertText()">点我</button>
 </body>
+
+<script>
+    function alertText (){
+        alert(ctxPath);
+        alert([[${name}]]);
+    }
+</script>
 </html>
