@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.furao.visualYard.dao.ShelfDao">
+    <resultMap id="ShelfEntityMap" type="com.furao.visualYard.entity.ShelfEntity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="uuid" property="uuid" jdbcType="VARCHAR"/>
+        <id column="time_uuid" property="timeUuid" jdbcType="VARCHAR"/>
+        <id column="shelf_no" property="shelfNo" jdbcType="VARCHAR"/>
+        <id column="shelf_desc" property="shelfDesc" jdbcType="VARCHAR"/>
+        <id column="shelf_status" property="shelfStatus" jdbcType="VARCHAR"/>
+        <id column="shelf_qty" property="shelfQty" jdbcType="INTEGER"/>
+        <id column="stock_id" property="stockId" jdbcType="INTEGER"/>
+        <id column="go_pos" property="goPos" jdbcType="VARCHAR"/>
+        <id column="go_category" property="goCategory" jdbcType="VARCHAR"/>
+        <id column="go_key" property="goKey" jdbcType="INTEGER"/>
+        <id column="go_size" property="goSize" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="base_column_list">
+        id,uuid,time_uuid,shelf_no,shelf_desc,shelf_status,shelf_qty,stock_id,go_pos,go_category,go_key,go_size
+    </sql>
+
+    <select id="queryShelfNoAll" resultMap="ShelfEntityMap">
+        select  <include refid="base_column_list" />
+        from shelf
+    </select>
+</mapper>

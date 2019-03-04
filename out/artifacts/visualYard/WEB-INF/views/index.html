@@ -13,7 +13,7 @@ hello world!</br>
 <button type="button" class="btn btn-primary" onclick="alertText()">点我</button>
 </body>
 
-<script>
+<script type="text/javascript" th:inline="javascript">
     function alertText (){
         alert(ctxPath);
         alert([[${name}]]);
