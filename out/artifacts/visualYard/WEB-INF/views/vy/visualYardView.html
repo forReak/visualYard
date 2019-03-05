@@ -8,8 +8,10 @@
 <body>
 visualYardView
 </body>
-
+<div th:value="${shelfList}"></div>
 <script type="text/javascript" th:inline="javascript">
-
+    $(function () {
+        console.log([[${shelfList}]]);
+    })
 </script>
 </html>

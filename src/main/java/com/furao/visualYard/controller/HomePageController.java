@@ -18,12 +18,14 @@ public class HomePageController {
     public String index(Model model){
         model.addAttribute("name","zhangsan");
 //        return "index";
-        List<ShelfEntity> allShelfList = shelfService.getAllShelfList();
+
         return "home";
     }
 
     @RequestMapping("/vy_view")
-    public String vyView(){
+    public String vyView(Model model){
+        List<ShelfEntity> allShelfList = shelfService.getAllShelfList();
+        model.addAttribute("shelfList",allShelfList);
         return "vy/visualYardView";
     }
 
