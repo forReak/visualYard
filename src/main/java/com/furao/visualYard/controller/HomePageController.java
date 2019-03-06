@@ -1,7 +1,9 @@
 package com.furao.visualYard.controller;
 
 import com.furao.visualYard.entity.ShelfEntity;
+import com.furao.visualYard.entity.StockEntity;
 import com.furao.visualYard.service.ShelfService;
+import com.furao.visualYard.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import java.util.List;
 public class HomePageController {
     @Autowired
     ShelfService shelfService;
+    @Autowired
+    StockService stockService;
 
     @RequestMapping("/")
     public String index(Model model){
@@ -25,7 +29,9 @@ public class HomePageController {
     @RequestMapping("/vy_view")
     public String vyView(Model model){
         List<ShelfEntity> allShelfList = shelfService.getAllShelfList();
+        List<StockEntity> allStockList = stockService.getAllStockList();
         model.addAttribute("shelfList",allShelfList);
+        model.addAttribute("stockList",allStockList);
         return "vy/visualYardView";
     }
 

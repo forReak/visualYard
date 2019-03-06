@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.furao.visualYard.dao.StockDao">
+    <resultMap id="StockEntityMap" type="com.furao.visualYard.entity.StockEntity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="stock_capacity_num" property="stockCapacityNum" jdbcType="INTEGER"/>
+        <id column="go_key" property="goKey" jdbcType="INTEGER"/>
+
+        <id column="uuid" property="uuid" jdbcType="VARCHAR"/>
+        <id column="time_uuid" property="timeUuid" jdbcType="VARCHAR"/>
+        <id column="stock_no" property="stockNo" jdbcType="VARCHAR"/>
+        <id column="stock_desc" property="stockDesc" jdbcType="VARCHAR"/>
+        <id column="stock_type" property="stockType" jdbcType="VARCHAR"/>
+        <id column="go_pos" property="goPos" jdbcType="VARCHAR"/>
+        <id column="go_category" property="goCategory" jdbcType="VARCHAR"/>
+        <id column="go_size" property="goSize" jdbcType="VARCHAR"/>
+        <id column="go_json" property="goJson" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="stock_base_column">
+        id,uuid,time_uuid,stock_no,stock_desc,stock_capacity_num,stock_type,
+        go_pos,go_category,go_key,go_size,go_json
+    </sql>
+
+    <sql id="t_stock"> t_stock </sql>
+
+    <select id="queryStockNoAll" resultMap="StockEntityMap">
+        select  <include refid="stock_base_column" />
+        from  <include refid="t_stock" />
+    </select>
+</mapper>

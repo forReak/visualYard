@@ -16,12 +16,12 @@
         <id column="go_size" property="goSize" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <sql id="base_column_list">
+    <sql id="shelf_base_column">
         id,uuid,time_uuid,shelf_no,shelf_desc,shelf_status,shelf_qty,stock_id,go_pos,go_category,go_key,go_size
     </sql>
 
     <select id="queryShelfNoAll" resultMap="ShelfEntityMap">
-        select  <include refid="base_column_list" />
-        from shelf
+        select  <include refid="shelf_base_column" />
+        from t_shelf
     </select>
 </mapper>
