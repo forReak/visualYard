@@ -24,4 +24,14 @@
         select  <include refid="shelf_base_column" />
         from t_shelf
     </select>
+
+    <select id="getShelfInfoByShelfNo" parameterType="hashmap" resultMap="ShelfEntityMap">
+        select  <include refid="shelf_base_column" />
+        from t_shelf
+        where shelf_no in
+        <foreach collection="list" item="shelfNo" index="index" open="(" close=")" separator=",">
+        #{shelfNo}
+        </foreach>
+        and stock_id = #{stockId}
+    </select>
 </mapper>

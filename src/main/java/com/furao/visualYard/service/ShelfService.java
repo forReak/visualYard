@@ -8,4 +8,6 @@ import java.util.List;
 public interface ShelfService {
 
     List<ShelfEntity> getAllShelfList();
+
+    boolean addShelfs(ShelfEntity shelfEntity);
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="common/base::proejct-context" th:remove="tag"></th:block>
+</head>
+<body>
+visualYardView
+</body>
+<div th:value="${shelfList}"></div>
+<script type="text/javascript" th:inline="javascript">
+    $(function () {
+        console.log([[${shelfList}]]);
+        console.log([[${stockList}]]);
+    })
+</script>
+</html>
