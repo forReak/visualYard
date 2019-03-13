@@ -48,13 +48,18 @@ public class ShelfServiceImpl implements ShelfService {
             throw new RuntimeException("无法新增,货架名重复");
         }
         List<ShelfEntity> shelfEntityList = new ArrayList<>();
-        for (String insertNo : shelfNoList) {
+        for (int i = 0; i < shelfNoList.size(); i++) {
+            String insertNo = shelfNoList.get(i);
             ShelfEntity insertShelf = new ShelfEntity();
             insertShelf.setUuid(generateUuid());
             insertShelf.setTimeUuid(generateUuid());
             insertShelf.setShelfNo(insertNo);
             insertShelf.setGoCategory("shelf");
-            insertShelf.setGoPos(shelfEntity.getGoPos());
+            if(!checkEmpty(shelfEntity.getGoPos())){
+                insertShelf.setGoPos(shelfEntity.getGoPos());
+            }else{
+                insertShelf.setGoPos(getPos(i));
+            }
             insertShelf.setGoSize(shelfEntity.getGoSize());
             insertShelf.setShelfDesc(shelfEntity.getShelfDesc());
             insertShelf.setShelfStatus(shelfEntity.getShelfStatus());
@@ -67,4 +72,19 @@ public class ShelfServiceImpl implements ShelfService {
     }
 
 
+    /**
+     * 方法内部调用
+     * node位置信息 形成网格状的10*n的位置
+     * 后期通过配置项进行调换x，y位置可实现初始化时横向还是竖向排列
+     * @Author fu
+     * @Date 2018/1/17
+     * @param j 当前是第几个
+     * @return
+     * @Throws
+     */
+    private String getPos(int j){
+        int x = (j/10)*60;
+        int y = (j%10)*60;
+        return y +" "+ x;
+    }
 }
