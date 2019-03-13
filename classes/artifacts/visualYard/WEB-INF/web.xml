@@ -6,6 +6,24 @@
         <welcome-file>/</welcome-file>
     </welcome-file-list>
 
+
+
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>log4jServletFilter</filter-name>
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>log4jServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath*:applicationContext.xml</param-value>
@@ -33,4 +51,5 @@
         <servlet-name>springMVC</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

@@ -26,14 +26,27 @@ public class ShelfController {
     }
 
 
+    /**
+     * 添加货架
+     * @param shelfEntity
+     * @return
+     */
     @RequestMapping("/addShelf")
     @ResponseBody
     public ResponseInfo addShelf(ShelfEntity shelfEntity){
         ResponseInfo responseInfo = new ResponseInfo();
-        boolean flag = shelfService.addShelfs(shelfEntity);
-        responseInfo.setResult(shelfEntity);
-        responseInfo.setFlag(1);
-        responseInfo.setMessage("success");
+        try {
+            boolean flag = shelfService.addShelfs(shelfEntity);
+            responseInfo.setResult(shelfEntity);
+            responseInfo.setFlag(1);
+            responseInfo.setMessage("success");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            responseInfo.setFlag(0);
+            responseInfo.setMessage("false");
+
+        }
         return responseInfo;
     }
 

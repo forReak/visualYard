@@ -45,7 +45,7 @@ public class ShelfServiceImpl implements ShelfService {
         }
         List<Object> dupList = utilService.checkNoDuplication(shelfNoList,shelfEntity.getStockId(),t_shelf);
         if(dupList.size()>0){
-            throw new RuntimeException("无法新增");
+            throw new RuntimeException("无法新增,货架名重复");
         }
         List<ShelfEntity> shelfEntityList = new ArrayList<>();
         for (String insertNo : shelfNoList) {
@@ -63,7 +63,7 @@ public class ShelfServiceImpl implements ShelfService {
             shelfEntityList.add(insertShelf);
         }
         shelfDao.insertShelfByList(shelfEntityList);
-        return false;
+        return true;
     }
 
 

@@ -3,7 +3,7 @@ package com.furao.visualYard.entity;
 public class ResponseInfo {
 
     private Object result;
-    private Integer flag;
+    private Integer flag = 0;
     private String message;
 
     public Object getResult() {
