@@ -145,6 +145,7 @@
 </body>
 <script type="text/javascript" th:inline="javascript">
     $(function () {
+        showShelfData();
         console.log([[${shelfList}]]);
     });
 
@@ -164,6 +165,13 @@
                 console.log(result);
             }
         });
+    }
+
+    /**
+     * 显示所有
+     */
+    function showShelfData(){
+
     }
 </script>
 </html>
